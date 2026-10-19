@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@custom-variant can-hover (@media (hover: hover) and (pointer: fine));
+
+:root {
+  --paper: #fafaf8;
+  --ink: #111111;
+  /* Brief value #8A8880 is 3.4:1 on paper and fails WCAG AA for small text.
+     #73716A is the same hue at 4.67:1. */
+  --ink-secondary: #73716a;
+  --rule: #dedcd6;
+  --placeholder: #f0eee9;
+
+  --gutter: 24px;
+  --margin: 20px;
+  --header-height: 72px;
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (width >= 48rem) {
+  :root {
+    --margin: 40px;
+  }
+}
+
+/* Remove Tailwind's default palette, type scale, radii and shadows so only
+   the tokens below can be used. */
+@theme {
+  --color-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-rule: var(--rule);
+  --color-placeholder: var(--placeholder);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --text-display: clamp(2.75rem, 7vw, 6rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 500;
+
+  --text-statement: clamp(1.5rem, 3vw, 2rem);
+  --text-statement--line-height: 1.3;
+  --text-statement--letter-spacing: -0.02em;
+  --text-statement--font-weight: 500;
+
+  --text-heading: 1.5rem;
+  --text-heading--line-height: 1.25;
+  --text-heading--font-weight: 500;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.45;
+  --text-label--letter-spacing: 0.06em;
+}
+
+@layer base {
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+}
+
+/* Body links: ink, 1px underline at 4px offset. */
+@utility link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+@utility measure {
+  max-width: 62ch;
+}
+
+/* Full container width for a rule drawn inside the content column (cols 4–12).
+   Pulls left by three columns and three gutters, measured against the page
+   Container, which is the nearest inline-size container. */
+@utility rule-bleed {
+  @media (width >= 64rem) {
+    width: 100cqw;
+    margin-left: calc(-1 * ((100cqw - 11 * var(--gutter)) / 4 + 3 * var(--gutter)));
+  }
+}
+
+/* Motion behaviours 4 and 5 run in CSS so they never wait for hydration.
+   Their reduced-motion path sits beside the JS one in lib/motion.ts. */
+@keyframes display-rise {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@utility display-rise {
+  animation: display-rise 600ms var(--ease-reveal) both;
+}
+
+@utility page-fade {
+  animation: page-fade 200ms linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .display-rise,
+  .page-fade {
+    animation: none;
+  }
+}
