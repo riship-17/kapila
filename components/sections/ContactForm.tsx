@@ -8,7 +8,7 @@ import { cx } from "@/lib/cx";
 import { Field, fieldControl } from "../ui/Field";
 import { AttachmentField } from "./AttachmentField";
 
-type ContactFormProps = { products: string[]; successMessage: string; fallbackEmail: string };
+type ContactFormProps = { products: { slug: string; name: string }[]; successMessage: string; fallbackEmail: string };
 
 const inputs = [
   { name: "name", label: "Name", type: "text", autoComplete: "name" },
@@ -27,6 +27,7 @@ export function ContactForm({ products, successMessage, fallbackEmail }: Contact
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<Enquiry>({
     resolver: zodResolver(enquirySchema),
@@ -36,6 +37,13 @@ export function ContactForm({ products, successMessage, fallbackEmail }: Contact
   useEffect(() => {
     if (sent) confirmation.current?.focus();
   }, [sent]);
+
+  // Product pages link here with ?product={slug}; preselect that product.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("product");
+    const match = products.find((product) => product.slug === slug);
+    if (match) setValue("product", match.name);
+  }, [products, setValue]);
 
   const chooseFile = (next: File | null) => {
     setFile(next);
@@ -54,7 +62,12 @@ export function ContactForm({ products, successMessage, fallbackEmail }: Contact
     if (response?.ok) return setSent(true);
     const data: unknown = await response?.json().catch(() => null);
     const message = data && typeof data === "object" && "error" in data ? String(data.error) : null;
-    setServerError(message ?? `The enquiry could not be sent. Email us at ${fallbackEmail} instead.`);
+    setServerError(
+      message ??
+        (fallbackEmail
+          ? `The enquiry could not be sent. Email us at ${fallbackEmail} instead.`
+          : "The enquiry could not be sent. Please try again in a moment."),
+    );
   };
 
   if (sent) {
@@ -93,7 +106,7 @@ export function ContactForm({ products, successMessage, fallbackEmail }: Contact
               <option value="" disabled>
                 Choose a product
               </option>
-              {[...products, PRODUCT_OTHER].map((product) => (
+              {[...products.map((product) => product.name), PRODUCT_OTHER].map((product) => (
                 <option key={product}>{product}</option>
               ))}
             </select>
@@ -113,7 +126,7 @@ export function ContactForm({ products, successMessage, fallbackEmail }: Contact
         </Field>
         <AttachmentField file={file} error={fileError} onChange={chooseFile} />
         <div className="pt-4">
-          <button type="submit" className="h-14 bg-ink px-8 text-body font-medium text-paper disabled:opacity-60">
+          <button type="submit" className="h-12 bg-brand px-6 text-body font-medium text-paper transition-opacity hover:opacity-85 disabled:opacity-60">
             {isSubmitting ? "Sending…" : "Send enquiry"}
           </button>
           <p role="alert" className="measure mt-4">

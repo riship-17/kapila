@@ -4,6 +4,7 @@ import { products } from "@/content/products";
 import { site } from "@/content/site";
 import { attachmentError, enquirySchema, PRODUCT_OTHER, type Enquiry } from "@/lib/enquiry";
 
+const emailUs = site.email ? ` Email us at ${site.email} instead.` : " Please try again later.";
 const productNames = new Set([...products.map((product) => product.name), PRODUCT_OTHER]);
 
 const fail = (status: number, error: string) => NextResponse.json({ error }, { status });
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
   const { RESEND_API_KEY: apiKey, ENQUIRY_TO: to, ENQUIRY_FROM: from } = process.env;
   if (!apiKey || !to || !from) {
     console.error("Enquiry not sent: RESEND_API_KEY, ENQUIRY_TO or ENQUIRY_FROM is not set.");
-    return fail(503, `The enquiry form is not accepting messages right now. Email us at ${site.email} instead.`);
+    return fail(503, `The enquiry form is not accepting messages right now.${emailUs}`);
   }
 
   const { error } = await new Resend(apiKey).emails.send({
@@ -57,7 +58,7 @@ export async function POST(request: Request) {
 
   if (error) {
     console.error("Resend rejected the enquiry:", error.message);
-    return fail(502, `The enquiry could not be sent. Email us at ${site.email} instead.`);
+    return fail(502, `The enquiry could not be sent.${emailUs}`);
   }
 
   return NextResponse.json({ ok: true });

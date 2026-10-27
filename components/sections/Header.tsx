@@ -1,42 +1,27 @@
 "use client";
 
-import * as m from "motion/react-m";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/content/site";
 import { cx } from "@/lib/cx";
-import { useMotionPreference } from "@/lib/motion";
 import { Container } from "../ui/Container";
-
-type NavLinkProps = { href: string; current: boolean; onClick?: () => void; className?: string; children: ReactNode };
-
-function NavLink({ href, current, onClick, className, children }: NavLinkProps) {
-  return (
-    <Link
-      href={href}
-      onClick={onClick}
-      aria-current={current ? "page" : undefined}
-      className={cx("decoration-1 underline-offset-4 hover:underline aria-[current=page]:underline", className)}
-    >
-      {children}
-    </Link>
-  );
-}
 
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
-  const { transition } = useMotionPreference();
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 24);
+    const update = () => setScrolled(window.scrollY > 8);
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
   }, []);
+
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -49,23 +34,28 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
-  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
-  const closeMenu = () => setMenuOpen(false);
+  const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+  const linkClass = "decoration-1 underline-offset-4 hover:underline aria-[current=page]:underline";
 
   return (
-    <header className="sticky top-0 z-40 bg-paper">
-      <Container className="relative flex h-(--header-height) items-center justify-between">
-        <Link href="/" className="text-[1rem] font-medium" onClick={closeMenu}>
-          {site.name}
+    <header
+      className={cx(
+        "sticky top-0 z-40 border-b bg-paper/90 backdrop-blur-md transition-colors duration-300",
+        scrolled || menuOpen ? "border-rule" : "border-transparent",
+      )}
+    >
+      <Container className="flex h-(--header-height) items-center justify-between">
+        <Link href="/" aria-label={`${site.name} home`} className="block">
+          <Image src={site.logo.src} alt={site.name} width={site.logo.width} height={site.logo.height} priority className="h-10 w-auto md:h-11" />
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex gap-8 font-mono text-label uppercase">
+          <ul className="flex items-center gap-8 text-[0.9375rem]">
             {nav.map((item) => (
               <li key={item.href}>
-                <NavLink href={item.href} current={isCurrent(item.href)}>
+                <Link href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} className={linkClass}>
                   {item.label}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>
@@ -77,18 +67,10 @@ export function Header() {
           aria-expanded={menuOpen}
           aria-controls="site-menu"
           onClick={() => setMenuOpen((open) => !open)}
-          className="font-mono text-label uppercase md:hidden"
+          className="-mr-2 p-2 font-mono text-label uppercase md:hidden"
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
-
-        <m.div
-          aria-hidden
-          className="absolute right-(--margin) bottom-0 left-(--margin) h-px bg-rule"
-          initial={false}
-          animate={{ opacity: scrolled || menuOpen ? 1 : 0 }}
-          transition={transition(0.25)}
-        />
       </Container>
 
       <nav
@@ -101,9 +83,14 @@ export function Header() {
           <ul>
             {nav.map((item) => (
               <li key={item.href} className="border-b border-rule">
-                <NavLink href={item.href} current={isCurrent(item.href)} onClick={closeMenu} className="block py-5 text-heading">
+                <Link
+                  href={item.href}
+                  aria-current={isCurrent(item.href) ? "page" : undefined}
+                  onClick={() => setMenuOpen(false)}
+                  className={cx(linkClass, "block py-5 text-title")}
+                >
                   {item.label}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>

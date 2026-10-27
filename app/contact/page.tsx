@@ -1,37 +1,67 @@
-import { ContactDetails } from "@/components/sections/ContactDetails";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { ContactMap } from "@/components/sections/ContactMap";
-import { ContentGrid } from "@/components/ui/Container";
-import { DisplayHeading } from "@/components/ui/DisplayHeading";
+import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { RevealItem } from "@/components/ui/Reveal";
-import { Section } from "@/components/ui/Section";
-import { contact } from "@/content/pages";
+import { Label } from "@/components/ui/Label";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { products } from "@/content/products";
-import { site } from "@/content/site";
+import { contactPage, site, telHref } from "@/content/site";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata = pageMetadata({ title: "Contact", description: contact.description, path: "/contact" });
+export const metadata = pageMetadata({ title: "Contact", description: contactPage.intro, path: "/contact" });
 
 export default function ContactPage() {
+  const details = [
+    site.contactPerson && { label: "Contact", content: <p>{site.contactPerson}</p> },
+    site.phones.length > 0 && {
+      label: "Phone",
+      content: site.phones.map((phone) => (
+        <p key={phone}>
+          <a href={telHref(phone)} className="link">
+            {phone}
+          </a>
+        </p>
+      )),
+    },
+    site.email && {
+      label: "Email",
+      content: (
+        <a href={`mailto:${site.email}`} className="link break-all">
+          {site.email}
+        </a>
+      ),
+    },
+    site.address.length > 0 && { label: "Address", content: site.address.map((line) => <p key={line}>{line}</p>) },
+    site.hours && { label: "Hours", content: <p>{site.hours}</p> },
+  ].filter((detail) => Boolean(detail)) as { label: string; content: React.ReactNode }[];
+
   return (
     <>
-      <DisplayHeading>Contact</DisplayHeading>
-      <Section number="01" title="Enquiry">
-        <ContentGrid className="gap-y-16">
-          <RevealItem className="col-span-9 md:col-span-5">
+      <PageHeading label="Contact" intro={contactPage.intro}>
+        Send an enquiry
+      </PageHeading>
+      <Container className="mt-16 lg:mt-24">
+        <div className="grid gap-x-12 gap-y-16 border-t border-rule pt-12 lg:grid-cols-12">
+          <div className="lg:col-span-7">
             <ContactForm
-              products={products.map((product) => product.name)}
-              successMessage={contact.success}
+              products={products.map(({ slug, name }) => ({ slug, name }))}
+              successMessage={contactPage.success}
               fallbackEmail={site.email}
             />
-          </RevealItem>
-          <div className="col-span-9 md:col-span-3 md:col-start-7">
-            <ContactDetails />
           </div>
-        </ContentGrid>
-      </Section>
-      <ContactMap />
+          {details.length > 0 && (
+            <address className="not-italic lg:col-span-4 lg:col-start-9">
+              {details.map((detail) => (
+                <div key={detail.label} className="border-b border-rule py-5 first:pt-0">
+                  <Label as="p" tone="secondary" className="mb-2">
+                    {detail.label}
+                  </Label>
+                  {detail.content}
+                </div>
+              ))}
+            </address>
+          )}
+        </div>
+      </Container>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },

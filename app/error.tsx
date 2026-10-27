@@ -12,10 +12,9 @@ export default function ErrorPage({ error, reset }: ErrorProps) {
   }, [error]);
 
   return (
-    <Container className="pt-16 lg:pt-24">
+    <Container className="pt-14 lg:pt-24">
       <h1 className="text-display">Something went wrong</h1>
-      <div className="mt-6 h-px bg-rule" />
-      <p className="measure mt-10">
+            <p className="measure mt-8 text-lead text-ink-secondary">
         This page could not be loaded.{" "}
         <button type="button" onClick={reset} className="link">
           Try again
