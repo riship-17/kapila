@@ -6,5 +6,5 @@ export const size = ogSize;
 export const contentType = "image/png";
 
 export default function OpengraphImage() {
-  return ogImage("Activated carbon, filter media and RO plants", site.tagline);
+  return ogImage("Activated carbon, RO filters and RO plants", site.tagline);
 }

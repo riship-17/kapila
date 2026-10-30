@@ -5,7 +5,7 @@ export const site = {
   logo: { src: "/logo.png", width: 1323, height: 566 },
   tagline: "Water treatment supplies",
   description:
-    "Coconut-shell activated carbon, filter sand and gravel, spun filter cartridges, filter housings, RO antiscalant, and commercial and industrial RO plants.",
+    "Coconut-shell activated carbon, spun filter cartridges, filter housings, RO antiscalant, and commercial and industrial RO plants.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   contactPerson: "Dhruv Trivedi",
   phones: ["+91 98798 31353", "+91 99133 31353"] as string[],
@@ -25,9 +25,9 @@ export const nav = [
 ] as const;
 
 export const home = {
-  heading: "Activated carbon, filter media and RO plants.",
+  heading: "Activated carbon, RO filters and RO plants.",
   intro:
-    "We supply the materials that clean water, from coconut-shell carbon and graded sand to spun filters and antiscalant, and build complete RO plants for commercial and industrial sites.",
+    "We supply the materials that clean water, from coconut-shell carbon to spun filters and antiscalant, and build complete RO plants for commercial and industrial sites.",
   heroImage: {
     src: "/images/site/warehouse-stock.jpg",
     alt: "Rows of white 25 kg sacks stacked on pallets in a warehouse, with an open sack of granular activated carbon in front",
@@ -35,7 +35,7 @@ export const home = {
   // TODO: Confirm this paragraph describes the business accurately.
   about: [
     "Kruti Enterprise supplies water treatment plants, filter manufacturers and RO assemblers. We keep our main grades in stock, packed and ready to dispatch.",
-    "Our granular activated carbon is made from coconut shell and packed in 25 kg bags. Alongside it we supply the rest of a filtration train: sand and gravel for the filter bed, spun cartridges and housings, antiscalant for the membranes, and the RO plant itself.",
+    "Our granular activated carbon is made from coconut shell and packed in 25 kg bags. Alongside it we supply the rest of a filtration train: spun cartridges and housings, antiscalant for the membranes, and the RO plant itself.",
   ],
   facts: [
     { value: "Coconut shell", label: "Activated carbon raw material" },

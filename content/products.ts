@@ -78,26 +78,6 @@ export const products: Product[] = [
     uses: ["Effluent treatment", "Decolourisation of liquids", "Chemical and food processing"],
   },
   {
-    slug: "filter-sand-and-gravel",
-    name: "Filter Sand & Gravel",
-    category: "Filter media",
-    short: "Graded sand, gravel and pebbles for pressure sand and multigrade filters.",
-    summary: [
-      "Filter media is the working layer of a sand or multigrade filter. Graded sand traps suspended solids, while coarser gravel and pebbles support the bed and spread the flow evenly.",
-      "Each grade is sized and bagged separately, so a filter can be packed layer by layer from the bottom up.",
-    ],
-    images: [
-      img("filter-sand-grades.jpg", "Six square samples of filter sand and grit, from coarse white quartz chips to fine sand", [1024, 1024]),
-      img("pebble-grades.jpg", "Two grades of rounded river pebbles laid out side by side", [1536, 1024]),
-    ],
-    details: [
-      { label: "Media", value: "Silica sand, gravel, pebbles" },
-      { label: "Grades", value: "Fine sand through to large pebbles" },
-      { label: "Supply", value: "By weight, to order" },
-    ],
-    uses: ["Pressure sand filters", "Multigrade filters", "Support layers under carbon beds", "Gravity filters"],
-  },
-  {
     slug: "ro-plants",
     name: "Commercial & Industrial RO Plants",
     category: "Water treatment plant",
