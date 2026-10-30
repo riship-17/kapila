@@ -36,7 +36,7 @@ export default function HomePage() {
             fill
             priority
             sizes="(min-width: 1024px) 480px, 100vw"
-            style={{ objectPosition: "60% 50%" }}
+            style={{ objectPosition: "30% 50%" }}
             className="object-cover"
           />
         </div>

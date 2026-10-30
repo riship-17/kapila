@@ -29,8 +29,8 @@ export const home = {
   intro:
     "We supply the materials that clean water, from coconut-shell carbon and graded sand to spun filters and antiscalant, and build complete RO plants for commercial and industrial sites.",
   heroImage: {
-    src: "/images/site/warehouse-studio.jpg",
-    alt: "Stacks of white 25 kg bags of granular activated carbon stacked in the warehouse",
+    src: "/images/site/warehouse-stock.jpg",
+    alt: "Rows of white 25 kg sacks stacked on pallets in a warehouse, with an open sack of granular activated carbon in front",
   },
   // TODO: Confirm this paragraph describes the business accurately.
   about: [
@@ -43,10 +43,10 @@ export const home = {
     { value: "18 m³/hr", label: "Largest recent RO plant" },
   ],
   project: {
-    src: "/images/products/ro-container-plant.jpg",
-    alt: "Inside a shipping container: RO pressure vessels, a blue vertical pump, a dosing tank and a control panel",
-    width: 808,
-    height: 1040,
+    src: "/images/products/ro-container.jpg",
+    alt: "Inside a shipping container: RO membrane tubes, a blue vertical pump, a filter vessel, dosing tanks and a control panel",
+    width: 1024,
+    height: 1280,
     title: "18 m³/hr container RO plant",
     body: "A complete reverse osmosis plant built into a shipping container: pressure vessels, high-pressure pump, dosing and control panel. It was delivered as one unit and commissioned on site.",
     facts: [

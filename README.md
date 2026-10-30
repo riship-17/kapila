@@ -26,8 +26,8 @@ To add a product, append an object to `products`. Images go in `public/images/pr
 
 ## Photographs and logo
 
-- `Images/studio/` holds the studio photographs (RO plant, spun filters with antiscalant, warehouse, filter housing). `public/images` uses them directly or as crops.
-- `Images/` holds the original WhatsApp photos. Granular carbon, carbon powder, sand and gravel, and the container RO plant still use crops of these.
+- `public/images/products/` holds AI-generated product photographs (made with Figma's image generator). They show the kind of product, not your actual stock or installations.
+- `Images/` holds the original WhatsApp photos and `Images/studio/` the earlier studio photographs. The site no longer uses either; the home page warehouse photo (`public/images/site/warehouse-stock.jpg`) is AI-generated too.
 - `public/logo.png` is the logo (header and footer). `app/icon.png` is the favicon, cut from the logo's K.
 
 To replace a photograph, add the file under a **new name** in `public/images/products/` and update its path and `[width, height]` in `content/products.ts`. A new name avoids Next.js serving its cached copy of the old file. `focus` (a CSS `object-position`) moves the square crop used in the product grid.

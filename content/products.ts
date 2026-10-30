@@ -42,9 +42,9 @@ export const products: Product[] = [
       "It is the standard dechlorination stage ahead of RO membranes, and is supplied in a range of particle sizes to suit the vessel and the flow rate.",
     ],
     images: [
-      img("gac-hand.jpg", "A handful of black coconut-shell activated carbon granules", [960, 1280]),
-      img("gac-pile.jpg", "A small pile of coarse activated carbon granules on a white sheet", [640, 960]),
-      img("gac-hand-2.jpg", "Fine activated carbon granules held in an open palm", [721, 1280]),
+      img("gac-handful.jpg", "A cupped hand holding a heap of black coconut-shell activated carbon granules", [960, 1280]),
+      img("gac-heap.jpg", "A pile of coarse activated carbon granules on dark slate, with a steel scoop beside it", [1024, 1536]),
+      img("gac-fine-palm.jpg", "Fine activated carbon granules held in an open palm", [864, 1536]),
     ],
     details: [
       { label: "Raw material", value: "Coconut shell" },
@@ -69,7 +69,7 @@ export const products: Product[] = [
       "Powdered activated carbon is dosed straight into a liquid, mixed, and then removed by settling or filtration. Its very fine particles give fast, complete contact.",
       "It suits decolourisation and purification work where a fixed carbon bed would be impractical.",
     ],
-    images: [img("carbon-powder.jpg", "Black activated carbon powder poured beside a stack of carbon bowls", [759, 368], "92% 50%")],
+    images: [img("carbon-powder-heap.jpg", "A heap of black activated carbon powder beside a wooden scoop and halved coconut shells", [1536, 864], "55% 50%")],
     details: [
       { label: "Form", value: "Fine powder" },
       { label: "Method", value: "Batch dosing" },
@@ -87,8 +87,8 @@ export const products: Product[] = [
       "Each grade is sized and bagged separately, so a filter can be packed layer by layer from the bottom up.",
     ],
     images: [
-      img("filter-sand.jpg", "Six samples of filter sand and grit, from coarse white chips to fine sand, each labelled with its size", [605, 539]),
-      img("pebbles.jpg", "Two grades of rounded river pebbles laid out with their size labels", [605, 403]),
+      img("filter-sand-grades.jpg", "Six square samples of filter sand and grit, from coarse white quartz chips to fine sand", [1024, 1024]),
+      img("pebble-grades.jpg", "Two grades of rounded river pebbles laid out side by side", [1536, 1024]),
     ],
     details: [
       { label: "Media", value: "Silica sand, gravel, pebbles" },
@@ -107,8 +107,8 @@ export const products: Product[] = [
       "Plants range from compact 1,000 litres-per-hour skids to container-built systems producing 18 m³ an hour, which arrive ready to connect on site.",
     ],
     images: [
-      img("ro-plant-1000lph-studio.jpg", "A 1,000 LPH RO plant on a steel frame with two blue MCF filter vessels, a control panel and a vertical pump", [1536, 1024]),
-      img("ro-container-plant.jpg", "An 18 m³/hr RO plant installed inside a shipping container", [808, 1040]),
+      img("ro-plant-skid.jpg", "An RO plant on a steel frame with two blue filter vessels, a control panel, cartridge housings, a vertical pump and RO membrane tubes", [1536, 1024]),
+      img("ro-container.jpg", "An RO plant installed inside a shipping container", [1024, 1280]),
     ],
     details: [
       { label: "Capacity", value: "From 1,000 LPH" },
@@ -127,7 +127,7 @@ export const products: Product[] = [
       "Spun cartridges are made from polypropylene fibre formed into a depth-filter tube. They trap sand, silt and rust before the water reaches the RO membrane.",
       "They fit standard filter housings and are replaced when the pressure drop across the filter starts to rise.",
     ],
-    images: [img("spun-filters-studio.jpg", "Three white polypropylene spun filter cartridges, two standard and one slim, standing upright", [512, 1024], "50% 72%")],
+    images: [img("spun-cartridges.jpg", "Four white polypropylene spun filter cartridges of different lengths standing upright", [864, 1536], "50% 60%")],
     details: [
       { label: "Material", value: "Polypropylene" },
       { label: "Type", value: "Depth (sediment) filter" },
@@ -144,7 +144,7 @@ export const products: Product[] = [
       "A filter housing holds a replaceable cartridge in the water line. Water enters through the cap, passes through the cartridge from the outside in, and leaves through the centre.",
       "The blue body unscrews from the black cap, so the cartridge can be changed in minutes without disturbing the pipework.",
     ],
-    images: [img("filter-housing.jpg", "A tall blue filter housing with a black cap and two ports on top", [1024, 1536], "50% 18%")],
+    images: [img("filter-housings.jpg", "Two tall blue filter housings with black caps and inlet and outlet ports on top", [1024, 1536], "50% 35%")],
     details: [
       { label: "Body", value: "Blue plastic, ribbed" },
       { label: "Cap", value: "Black, inlet and outlet ports" },
@@ -161,7 +161,7 @@ export const products: Product[] = [
       "Antiscalant is dosed into the feed water ahead of the RO membranes. It keeps hardness salts such as calcium carbonate and calcium sulphate in solution, so they do not deposit as scale on the membrane surface.",
       "Steady dosing keeps permeate flow up and lengthens the time between membrane cleanings.",
     ],
-    images: [img("antiscalant-studio.jpg", "Blue plastic cans of RO antiscalant: a large can with a yellow cap and a smaller can with a bottle on top", [832, 1024], "50% 60%")],
+    images: [img("antiscalant-cans.jpg", "Three blue plastic cans of RO antiscalant in large, medium and small sizes", [1024, 1280], "50% 60%")],
     details: [
       { label: "Form", value: "Liquid" },
       { label: "Dosing", value: "Continuous, into the RO feed" },
