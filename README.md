@@ -1,4 +1,4 @@
-# Kruti Enterprise website
+# Kapila Enterprise website
 
 Next.js 15 (App Router), TypeScript, Tailwind CSS v4. Every page is statically generated except `/api/enquiry`.
 
@@ -28,7 +28,7 @@ To add a product, append an object to `products`. Images go in `public/images/pr
 
 - `public/images/products/` holds AI-generated product photographs (made with Figma's image generator). They show the kind of product, not your actual stock or installations.
 - `Images/` holds the original WhatsApp photos and `Images/studio/` the earlier studio photographs. The site no longer uses either; the home page warehouse photo (`public/images/site/warehouse-stock.jpg`) is AI-generated too.
-- `public/logo.png` is the logo (header and footer). `app/icon.png` is the favicon, cut from the logo's K.
+- `public/logo.png` is the logo (header and footer) and `app/icon.png` the favicon (the K mark alone). Both are rendered from the vector sources `Images/logo.svg` and `Images/icon.svg`; edit those and re-export to change them.
 
 To replace a photograph, add the file under a **new name** in `public/images/products/` and update its path and `[width, height]` in `content/products.ts`. A new name avoids Next.js serving its cached copy of the old file. `focus` (a CSS `object-position`) moves the square crop used in the product grid.
 

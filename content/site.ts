@@ -1,8 +1,8 @@
 // TODO: Fill in the address and hours. Anything left empty is simply not shown.
 
 export const site = {
-  name: "Kruti Enterprise",
-  logo: { src: "/logo.png", width: 1323, height: 566 },
+  name: "Kapila Enterprise",
+  logo: { src: "/logo.png", width: 1481, height: 556 },
   tagline: "Water treatment supplies",
   description:
     "Coconut-shell activated carbon, spun filter cartridges, filter housings, RO antiscalant, and commercial and industrial RO plants.",
@@ -34,7 +34,7 @@ export const home = {
   },
   // TODO: Confirm this paragraph describes the business accurately.
   about: [
-    "Kruti Enterprise supplies water treatment plants, filter manufacturers and RO assemblers. We keep our main grades in stock, packed and ready to dispatch.",
+    "Kapila Enterprise supplies water treatment plants, filter manufacturers and RO assemblers. We keep our main grades in stock, packed and ready to dispatch.",
     "Our granular activated carbon is made from coconut shell and packed in 25 kg bags. Alongside it we supply the rest of a filtration train: spun cartridges and housings, antiscalant for the membranes, and the RO plant itself.",
   ],
   facts: [

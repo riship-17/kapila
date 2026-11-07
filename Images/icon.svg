@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <mask id="gap" maskUnits="userSpaceOnUse" x="-20" y="-20" width="640" height="600">
+      <rect x="-20" y="-20" width="640" height="600" fill="#fff"/>
+      <path d="M48 548 C-6 474 -4 364 78 282 C178 182 330 92 506 40 C344 88 212 172 128 262 C70 326 40 420 48 548 Z" fill="#000" stroke="#000" stroke-width="28" stroke-linejoin="round"/>
+    </mask>
+  </defs>
+  <rect width="512" height="512" fill="#fff"/>
+  <g fill="#0158b4" transform="translate(106 56) scale(0.72)">
+    <g mask="url(#gap)"><path d="M10 0 H86 Q96 0 96 10 V546 Q96 556 86 556 H10 Q0 556 0 546 V10 Q0 0 10 0 Z"/><path d="M96 170 L270 4 Q274 0 282 0 H402 L96 292 Z"/><path d="M150 247 L208 196 L384 355 H272 Q264 355 258 349 Z"/></g>
+    <path d="M48 548 C-6 474 -4 364 78 282 C178 182 330 92 506 40 C344 88 212 172 128 262 C70 326 40 420 48 548 Z"/>
+  </g>
+</svg>
