@@ -13,7 +13,7 @@ Pages: Home (`/`), Products (`/products`), one page per product (`/products/{slu
 
 ## Before launch
 
-1. **Contact details** — `content/site.ts`: name, phones and email are set from the business card; `address` and `hours` are still empty (and hidden until filled in).
+1. **Contact details** — `content/site.ts`: name, phone, email and address are set; `contactPerson` and `hours` are still empty (and hidden until filled in).
 2. **Product details** — `content/products.ts`. The detail rows were written from the product photographs only. Check each one against your real specifications.
 3. **About copy** — `home.about` in `content/site.ts`.
 

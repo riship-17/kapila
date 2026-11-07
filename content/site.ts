@@ -1,4 +1,4 @@
-// TODO: Fill in the address and hours. Anything left empty is simply not shown.
+// TODO: Fill in the opening hours and contact person. Anything left empty is simply not shown.
 
 export const site = {
   name: "Kapila Enterprise",
@@ -7,11 +7,15 @@ export const site = {
   description:
     "Coconut-shell activated carbon, spun filter cartridges, filter housings, RO antiscalant, and commercial and industrial RO plants.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
-  contactPerson: "Dhruv Trivedi",
-  phones: ["+91 98798 31353", "+91 99133 31353"] as string[],
-  email: "krutiwatersolution@gmail.com",
+  contactPerson: "",
+  phones: ["+91 94294 38776"] as string[],
+  email: "siddhi0047@gmail.com",
   /** One line per row, e.g. ["Plot 12, GIDC Estate", "Ahmedabad, Gujarat 382445"]. */
-  address: [] as string[],
+  address: [
+    "20, Shyam Corner, Sai Baba Mandir Road",
+    "Nr. Express Highway Junction, CTM",
+    "Ahmedabad 380026",
+  ] as string[],
   hours: "",
 };
 
